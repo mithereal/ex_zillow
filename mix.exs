@@ -42,6 +42,10 @@ defmodule Zillow.Mixfile do
      links: %{"GitHub" => "https://github.com/mithereal/zillow"}]
   end
 
+  defp aliases do
+        [c: "compile"]
+  end
+
 end
 
 
