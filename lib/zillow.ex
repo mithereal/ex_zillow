@@ -20,7 +20,7 @@ This module is responsible for retrieving data from zillow.
               %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
 """
 
-def fetch(%{"address" => address, "area" => area }) do
+def fetch(%{address: address, area: area }) do
 
     key = Application.get_env(:zillow, :api_key)
 
