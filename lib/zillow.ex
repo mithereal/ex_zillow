@@ -24,6 +24,7 @@ def fetch(%{address: address, area: area }) do
 
     key = Application.get_env(:zillow, :api_key)
 
+IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: 'HTTPotion.get("https://www.zillow.com/webservice/GetDeepSearchResults.htm", query: %{"zws-id": key, "address": address, "citystatezip": area })')
 
    response = case address do
     " " -> %{error: "Address field Missing" }
