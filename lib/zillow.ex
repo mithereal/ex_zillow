@@ -5,7 +5,7 @@ This module is responsible for retrieving data from zillow.
 """
 
 
-@doc -S"""
+@doc """
  fetch the number of rooms and sqft from zillow return a json string.
 
  ## Examples
@@ -62,7 +62,7 @@ def fetch(%{"address" => address, "area" => area }) do
     response
 end
 
-@doc -S"""
+@doc """
  fetch the number of rooms and sqft from zillow return a json string using default data returned from google maps api as input.
 
  ## Examples
