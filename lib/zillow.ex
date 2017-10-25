@@ -54,6 +54,8 @@ def fetch(%{address: address, area: area }) do
    %{attributes: %{}, elements: [], name: "finishedsqft", text: sq_ft, texts: _ } = fh
 
    %{bathrooms: String.to_float(bathroom_number), total_rooms: String.to_integer(totalrooms), sq_ft: String.to_integer(sq_ft) }
+   "2" -> %{ error: 2 , message: "invalid zillow api key" }
+   _-> %{ error: "other" , message: "a general error occured" }
          end
 
         code_response
