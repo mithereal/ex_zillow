@@ -12,7 +12,7 @@ defmodule Zillow.Mixfile do
      start_permanent: Mix.env == :prod,
      deps: deps(),
      description: description(),
-     name: "Google Directions Generator",
+     name: "Zillow Api",
      source_url: "https://github.com/mithereal/zillow",
      package: package()
      ]
@@ -26,7 +26,8 @@ defmodule Zillow.Mixfile do
   defp deps do
     [
     {:httpotion, "~> 3.0.2"},
-    {:friendly, "~> 1.0"}
+    {:friendly, "~> 1.0"},
+    {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 

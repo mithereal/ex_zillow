@@ -4,7 +4,7 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+[available in Hex](https://hex.pm/packages/zillow), the package can be installed
 by adding `zillow` to your list of dependencies in `mix.exs`:
 
 ```elixir

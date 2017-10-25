@@ -1,31 +1,40 @@
 defmodule Zillow do
 
 @moduledoc """
-This is responsible for retrieving data from zillow.
+This module is responsible for retrieving data from zillow.
 """
 
 
-@doc """
+@doc -S"""
  fetch the number of rooms and sqft from zillow return a json string.
+
+ ## Examples
+
+       iex> address = "4406 N 48th st"
+
+       iex> area = "Phoenix, AZ 85008"
+
+       iex> address_record = %{address: address, area: area}
+
+       iex> Zillow.fetch(address)
+              %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
 """
-  def fetch(conn, _params) do
 
-   key = Application.get_env(:zillow, :api_key)
+def fetch(%{"address" => address, "area" => area }) do
 
-   address = Enum.join([_params["street_number"], _params["route"]], " ")
+    key = Application.get_env(:zillow, :api_key)
 
-   citystatezip = Enum.join([_params["locality"], _params["administrative_area_level_1"]], " ")
 
    response = case address do
     " " -> %{error: "Address field Missing" }
-    _-> zillow =  HTTPotion.get("https://www.zillow.com/webservice/GetDeepSearchResults.htm", query: %{"zws-id": key, "address": address, "citystatezip": citystatezip })
+    _-> zillow =  HTTPotion.get("https://www.zillow.com/webservice/GetDeepSearchResults.htm", query: %{"zws-id": key, "address": address, "citystatezip": area })
 
     c = Friendly.find(zillow.body, "code")
 
     [%{attributes: _, elements: _, name: _, text: code, texts: _}] = c
 
     code_response = case code do
-    "508" ->  nil
+    "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
     [ bh | bt ] = bathrooms
@@ -51,6 +60,25 @@ This is responsible for retrieving data from zillow.
     end
 
     response
+end
+
+@doc -S"""
+ fetch the number of rooms and sqft from zillow return a json string using default data returned from google maps api as input.
+
+ ## Examples
+
+       iex> Zillow.fetch(%{"address" => address, "route" => route, "locality" => locality, "area" => area})
+              %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
+"""
+
+  def fetch(%{"address" => address, "route" => route, "locality" => locality, "area" => area}) do
+
+   address = Enum.join([address, route ], " ")
+
+   citystatezip = Enum.join([locality, area ], " ")
+
+   fetch(%{"address" => address, "area" => citystatezip })
+
 end
 
 
