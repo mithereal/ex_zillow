@@ -13,7 +13,7 @@ defmodule Zillow.Mixfile do
      deps: deps(),
      description: description(),
      name: "Zillow Api",
-     source_url: "https://github.com/mithereal/zillow",
+     source_url: "https://github.com/mithereal/elixir-zillow",
      package: package()
      ]
   end
@@ -40,7 +40,7 @@ defmodule Zillow.Mixfile do
   defp package() do
     [maintainers: ["Jason Clark"],
      licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/mithereal/zillow"}]
+     links: %{"GitHub" => "https://github.com/mithereal/elixir-zillow"}]
   end
 
   defp aliases do
