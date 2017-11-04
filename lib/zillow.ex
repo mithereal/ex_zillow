@@ -56,7 +56,7 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
       finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
 
      fh =  case Enum.count finishedSqFt > 0 do
-     true -> [ rh | ft ] = finishedSqFt
+     true -> [ fh | ft ] = finishedSqFt
      fh
      false -> 0
      end
