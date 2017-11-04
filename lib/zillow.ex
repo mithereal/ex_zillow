@@ -19,7 +19,6 @@ This module is responsible for retrieving data from zillow.
        iex> Zillow.fetch(address)
               %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
 """
-
 def fetch(%{address: address, area: area }) do
 
     key = Application.get_env(:zillow, :api_key)
@@ -38,35 +37,30 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
-    bh =  case Enum.count bathrooms > 0 do
-      true -> [ bh | bt ] = bathrooms
-      bh
-      false -> 0
-      end
-
+    [ bh | bt ] = bathrooms
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
 
-    rh =  case Enum.count rooms > 0 do
-     true -> [ rh | rt ] = rooms
-     rh
-     false -> 0
-     end
+    [ rh | rt ] = rooms
 
-      finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
+     finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
 
-     fh =  case Enum.count finishedSqFt > 0 do
-     true -> [ fh | ft ] = finishedSqFt
-     fh
-     false -> 0
-     end
+    [ fh | ft ] = finishedSqFt
 
+    bathroom_number = case bh do
+     %{attributes: %{}, elements: [], name: "bathrooms", text: _, texts: _ } ->  bh.text
+     _-> "0"
+    end
 
-   %{attributes: %{}, elements: [], name: "bathrooms", text: bathroom_number, texts: _ } = bh
+    totalrooms = case bh do
+     %{attributes: %{}, elements: [], name: "totalrooms", text: _, texts: _ } ->  rh.text
+     _-> "0"
+    end
 
-   %{attributes: %{}, elements: [], name: "totalrooms", text: totalrooms, texts: _ } = rh
-
-   %{attributes: %{}, elements: [], name: "finishedsqft", text: sq_ft, texts: _ } = fh
+    sq_ft = case bh do
+     %{attributes: %{}, elements: [], name: "finishedsqft", text: _, texts: _ } ->  fh.text
+     _-> "0"
+    end
 
    %{bathrooms: String.to_float(bathroom_number), total_rooms: String.to_integer(totalrooms), sq_ft: String.to_integer(sq_ft) }
    "2" -> %{ error: 2 , message: "invalid zillow api key" }
