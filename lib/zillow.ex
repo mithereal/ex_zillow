@@ -38,15 +38,29 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
-    [ bh | bt ] = bathrooms
+    bh =  case count bathrooms > 0 do
+      true -> [ bh | bt ] = bathrooms
+      bh
+      false -> 0
+      end
+
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
 
-    [ rh | rt ] = rooms
+    rh =  case count rooms > 0 do
+     true -> [ rh | rt ] = rooms
+     rh
+     false -> 0
+     end
 
-    finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
+      finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
 
-    [ fh | ft ] = finishedSqFt
+     fh =  case count finishedSqFt > 0 do
+     true -> [ rh | ft ] = finishedSqFt
+     fh
+     false -> 0
+     end
+
 
    %{attributes: %{}, elements: [], name: "bathrooms", text: bathroom_number, texts: _ } = bh
 
