@@ -38,7 +38,7 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
-    bh =  case count bathrooms > 0 do
+    bh =  case Enum.count bathrooms > 0 do
       true -> [ bh | bt ] = bathrooms
       bh
       false -> 0
@@ -47,7 +47,7 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
 
-    rh =  case count rooms > 0 do
+    rh =  case Enum.count rooms > 0 do
      true -> [ rh | rt ] = rooms
      rh
      false -> 0
@@ -55,7 +55,7 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
 
       finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
 
-     fh =  case count finishedSqFt > 0 do
+     fh =  case Enum.count finishedSqFt > 0 do
      true -> [ rh | ft ] = finishedSqFt
      fh
      false -> 0
