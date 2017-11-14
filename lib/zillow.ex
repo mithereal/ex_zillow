@@ -41,21 +41,23 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
 
-   rh = case Enum.count rooms > 0 do
-    true -> [ rh | rt ] = rooms
-    rh
-    false -> 0
-    end
+IO.inspect(rooms, label: "zillow rooms result")
+#   rh = case Enum.count rooms > 0 do
+#    true -> [ rh | rt ] = rooms
+#    rh
+#    false -> 0
+#    end
 
+rh = 0
     finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
+IO.inspect(rooms, label: "zillow rooms result")
+#    fh = case Enum.count finishedSqFt > 0 do
+#    true -> [ fh | ft ] = finishedSqFt
+#    fh
+#    false -> 0
+#    end
 
-    fh = case Enum.count finishedSqFt > 0 do
-    true -> [ fh | ft ] = finishedSqFt
-    fh
-    false -> 0
-    end
-
-
+fh = 0
 
 
 
