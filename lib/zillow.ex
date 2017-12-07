@@ -69,7 +69,7 @@ def fetch(%{address: address, area: area }) do
 
     bathroom_number = case bh do
      %{attributes: %{}, elements: [], name: "bathrooms", text: _, texts: _ } ->  bh.text
-     _-> "0"
+     _-> "0.0"
     end
 
     totalrooms = case bh do
