@@ -23,7 +23,6 @@ def fetch(%{address: address, area: area }) do
 
     key = Application.get_env(:zillow, :api_key)
 
-IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: 'HTTPotion.get("https://www.zillow.com/webservice/GetDeepSearchResults.htm", query: %{"zws-id": key, "address": address, "citystatezip": area })')
 
    response = case address do
     " " -> %{error: "Address field Missing" }
@@ -37,11 +36,16 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
-IO.inspect(bathrooms, label: "bathrooms")
-    [ bh | bt ] = bathrooms
+        bathroom_count = Enum.count bathrooms
+
+        bh = case bathroom_count > 0 do
+        true -> [ bh | bt ] = bathrooms
+        bh
+        false -> 0
+        end
+
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
-
 
     room_count = Enum.count rooms
 
@@ -50,6 +54,7 @@ IO.inspect(bathrooms, label: "bathrooms")
     rh
     false -> 0
     end
+
 
     finishedSqFt = Friendly.find(zillow.body, "finishedsqft")
 
@@ -106,7 +111,5 @@ end
    fetch(%{"address" => address, "area" => citystatezip })
 
 end
-
-
 
 end
