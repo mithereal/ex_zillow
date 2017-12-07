@@ -41,7 +41,7 @@ def fetch(%{address: address, area: area }) do
         bh = case bathroom_count > 0 do
         true -> [ bh | bt ] = bathrooms
         bh
-        false -> 0.0
+        false -> "0.0"
         end
 
 
@@ -52,7 +52,7 @@ def fetch(%{address: address, area: area }) do
    rh = case room_count > 0 do
     true -> [ rh | rt ] = rooms
     rh
-    false -> 0
+    false -> "0"
     end
 
 
@@ -63,7 +63,7 @@ def fetch(%{address: address, area: area }) do
     fh = case finishedSqFt_count > 0 do
     true -> [ fh | ft ] = finishedSqFt
     fh
-    false -> 0
+    false -> "0"
     end
 
 
@@ -113,4 +113,3 @@ end
 end
 
 end
-
