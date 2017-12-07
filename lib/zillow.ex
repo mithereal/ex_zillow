@@ -37,6 +37,7 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     "508" ->  %{ error: 508, message: "no exact match found" }
     "0" -> bathrooms = Friendly.find(zillow.body, "bathrooms")
 
+IO.inspect(bathrooms, label: "bathrooms")
     [ bh | bt ] = bathrooms
 
     rooms =  Friendly.find(zillow.body, "totalrooms")
@@ -59,7 +60,6 @@ IO.inspect(%{"zws-id": key, "address": address, "citystatezip": area }, label: '
     fh
     false -> 0
     end
-
 
 
     bathroom_number = case bh do
