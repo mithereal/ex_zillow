@@ -41,7 +41,7 @@ def fetch(%{address: address, area: area }) do
         bh = case bathroom_count > 0 do
         true -> [ bh | bt ] = bathrooms
         bh
-        false -> 0
+        false -> 0.0
         end
 
 
@@ -113,3 +113,4 @@ end
 end
 
 end
+
