@@ -17,7 +17,7 @@ This module is responsible for retrieving data from zillow.
        iex> address_record = %{address: address, area: area}
 
        iex> Zillow.fetch(address)
-              %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
+        %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
 """
 def fetch(%{address: address, area: area }) do
 
@@ -99,7 +99,7 @@ end
  ## Examples
 
        iex> Zillow.fetch(%{"address" => address, "route" => route, "locality" => locality, "area" => area})
-              %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
+       %{bathrooms: 5, total_rooms: 5, sq_ft: 1200 }
 """
 
   def fetch(%{"address" => address, "route" => route, "locality" => locality, "area" => area}) do
