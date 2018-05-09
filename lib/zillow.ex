@@ -23,8 +23,14 @@ def fetch(%{address: address, area: area }) do
 
     key = Application.get_env(:zillow, :api_key)
 
+    error = case key == nil do
+      true -> {:error, "Zillow api key cannot be blank" }
+      false -> {:ok}
+    end
 
-   response = case address do
+    response = case error do
+      {:error, msg } -> {:error, msg }
+      {:ok} ->  case address do
     " " -> %{error: "Address field Missing" }
     _-> zillow =  HTTPotion.get("https://www.zillow.com/webservice/GetDeepSearchResults.htm", query: %{"zws-id": key, "address": address, "citystatezip": area })
 
@@ -88,6 +94,8 @@ def fetch(%{address: address, area: area }) do
          end
 
         code_response
+    end
+
     end
 
     response
