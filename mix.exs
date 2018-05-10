@@ -34,7 +34,7 @@ defmodule Zillow.Mixfile do
 
   defp deps do
     [
-    {:httpotion, "~> 3.0.2"},
+    {:httpotion, "~> 3.1.0"},
     {:friendly, "~> 1.0"},
     {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
     {:inch_ex, ">= 0.0.0", only: :docs}
