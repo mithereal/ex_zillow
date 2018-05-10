@@ -45,6 +45,30 @@ defmodule Zillow do
 
                    c = Friendly.find(zillow.body, "code")
 
+                   usecode = Friendly.find(zillow.body, "usecode")
+                   fipscounty = Friendly.find(zillow.body, "fipscounty")
+                   taxassessmentyear = Friendly.find(zillow.body, "taxassessmentyear")
+                   taxassessment = Friendly.find(zillow.body, "taxassessment")
+                   yearbuilt = Friendly.find(zillow.body, "yearbuilt")
+                   lotSizesqft = Friendly.find(zillow.body, "lotsizesqft")
+                   lastupdated = Friendly.find(zillow.body, "last-updated")
+                   zindexvalue = Friendly.find(zillow.body, "zindexvalue")
+
+                   street = Friendly.find(zillow.body, "street")
+                   zipcode = Friendly.find(zillow.body, "zipcode")
+                   city = Friendly.find(zillow.body, "city")
+                   state = Friendly.find(zillow.body, "state")
+                   latitude = Friendly.find(zillow.body, "latitude")
+                   longitude = Friendly.find(zillow.body, "longitude")
+
+                   homedetails = Friendly.find(zillow.body, "homedetails")
+                   graphsanddata = Friendly.find(zillow.body, "graphsanddata")
+                   mapthishome = Friendly.find(zillow.body, "mapthishome")
+                   comparables = Friendly.find(zillow.body, "comparables")
+                   overview = Friendly.find(zillow.body, "overview")
+                   forsalebyqwner = Friendly.find(zillow.body, "forsalebyowner")
+                   forSale = Friendly.find(zillow.body, "forsale")
+
                    [%{attributes: _, elements: _, name: _, text: code, texts: _}] = c
 
                    code_response = case code do
@@ -87,7 +111,31 @@ defmodule Zillow do
                               bathrooms: String.to_float(bathroom_number),
                               total_rooms: String.to_integer(totalrooms),
                               sq_ft: String.to_integer(sq_ft)
+
                             }
+                            usecode = Friendly.find(zillow.body, "usecode")
+                            fipscounty = Friendly.find(zillow.body, "fipscounty")
+                            taxassessmentyear = Friendly.find(zillow.body, "taxassessmentyear")
+                            taxassessment = Friendly.find(zillow.body, "taxassessment")
+                            yearbuilt = Friendly.find(zillow.body, "yearbuilt")
+                            lotSizesqft = Friendly.find(zillow.body, "lotsizesqft")
+                            lastupdated = Friendly.find(zillow.body, "last-updated")
+                            zindexvalue = Friendly.find(zillow.body, "zindexvalue")
+
+                            street = Friendly.find(zillow.body, "street")
+                            zipcode = Friendly.find(zillow.body, "zipcode")
+                            city = Friendly.find(zillow.body, "city")
+                            state = Friendly.find(zillow.body, "state")
+                            latitude = Friendly.find(zillow.body, "latitude")
+                            longitude = Friendly.find(zillow.body, "longitude")
+
+                            homedetails = Friendly.find(zillow.body, "homedetails")
+                            graphsanddata = Friendly.find(zillow.body, "graphsanddata")
+                            mapthishome = Friendly.find(zillow.body, "mapthishome")
+                            comparables = Friendly.find(zillow.body, "comparables")
+                            overview = Friendly.find(zillow.body, "overview")
+                            forsalebyqwner = Friendly.find(zillow.body, "forsalebyowner")
+                            forSale = Friendly.find(zillow.body, "forsale")
                      "2" -> %{error: 2, message: "invalid zillow api key"}
                      _ -> %{error: 000, message: "a general error occured"}
                    end
