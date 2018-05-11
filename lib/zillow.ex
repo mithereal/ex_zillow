@@ -107,35 +107,57 @@ defmodule Zillow do
                               _ -> "0"
                             end
 
+
+                            [usecode] = Friendly.find(zillow.body, "usecode")
+                            [fipscounty] = Friendly.find(zillow.body, "fipscounty")
+                            [taxassessmentyear] = Friendly.find(zillow.body, "taxassessmentyear")
+                            [taxassessment] = Friendly.find(zillow.body, "taxassessment")
+                            [yearbuilt] = Friendly.find(zillow.body, "yearbuilt")
+                            [lotSizesqft] = Friendly.find(zillow.body, "lotsizesqft")
+                            [lastupdated] = Friendly.find(zillow.body, "last-updated")
+                            [zindexvalue]= Friendly.find(zillow.body, "zindexvalue")
+
+                           [street] = Friendly.find(zillow.body, "street")
+                           [zipcode] = Friendly.find(zillow.body, "zipcode")
+                           [city] = Friendly.find(zillow.body, "city")
+                           [state] = Friendly.find(zillow.body, "state")
+                           [latitude] = Friendly.find(zillow.body, "latitude")
+                           [longitude] = Friendly.find(zillow.body, "longitude")
+
+                            [homedetails] = Friendly.find(zillow.body, "homedetails")
+                            [graphsanddata] = Friendly.find(zillow.body, "graphsanddata")
+                            [mapthishome] = Friendly.find(zillow.body, "mapthishome")
+                            [comparables] = Friendly.find(zillow.body, "comparables")
+                            [overview] = Friendly.find(zillow.body, "overview")
+                            [forsalebyowner] = Friendly.find(zillow.body, "forsalebyowner")
+                            [forSale] = Friendly.find(zillow.body, "forsale")
+
                             %{
                               bathrooms: String.to_float(bathroom_number),
                               total_rooms: String.to_integer(totalrooms),
-                              sq_ft: String.to_integer(sq_ft)
-
+                              sq_ft: String.to_integer(sq_ft),
+                              usecode: usecode.text,
+                              fipscounty: fipscounty.text,
+                              taxassessmentyear: taxassessmentyear.text,
+                              yearbuilt: yearbuilt.text,
+                              lotSizesqft: lotSizesqft.text,
+                              lastupdated: lastupdated.text,
+                              zindexvalue: zindexvalue.text,
+                              street: street.text,
+                              zipcode: zipcode.text,
+                              city: city.text,
+                              state: state.text,
+                              latitude: latitude.text,
+                              longitude: longitude.text,
+                              forSale: forSale.text,
+                              forsalebyowner: forsalebyowner.text,
+                              homedetails: homedetails.text,
+                              graphsanddata: graphsanddata.text,
+                              overview: overview.text,
+                              comparables: comparables.text,
+                              mapthishome: mapthishome.text
                             }
-                            usecode = Friendly.find(zillow.body, "usecode")
-                            fipscounty = Friendly.find(zillow.body, "fipscounty")
-                            taxassessmentyear = Friendly.find(zillow.body, "taxassessmentyear")
-                            taxassessment = Friendly.find(zillow.body, "taxassessment")
-                            yearbuilt = Friendly.find(zillow.body, "yearbuilt")
-                            lotSizesqft = Friendly.find(zillow.body, "lotsizesqft")
-                            lastupdated = Friendly.find(zillow.body, "last-updated")
-                            zindexvalue = Friendly.find(zillow.body, "zindexvalue")
 
-                            street = Friendly.find(zillow.body, "street")
-                            zipcode = Friendly.find(zillow.body, "zipcode")
-                            city = Friendly.find(zillow.body, "city")
-                            state = Friendly.find(zillow.body, "state")
-                            latitude = Friendly.find(zillow.body, "latitude")
-                            longitude = Friendly.find(zillow.body, "longitude")
-
-                            homedetails = Friendly.find(zillow.body, "homedetails")
-                            graphsanddata = Friendly.find(zillow.body, "graphsanddata")
-                            mapthishome = Friendly.find(zillow.body, "mapthishome")
-                            comparables = Friendly.find(zillow.body, "comparables")
-                            overview = Friendly.find(zillow.body, "overview")
-                            forsalebyqwner = Friendly.find(zillow.body, "forsalebyowner")
-                            forSale = Friendly.find(zillow.body, "forsale")
                      "2" -> %{error: 2, message: "invalid zillow api key"}
                      _ -> %{error: 000, message: "a general error occured"}
                    end
