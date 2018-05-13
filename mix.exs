@@ -55,10 +55,8 @@ defmodule Zillow.Mixfile do
       links:  %{GitHub: @source_url },
       files: [
         "lib",
-        "LICENSE",
         "mix.exs",
         "README.md",
-        "priv/templates"
       ]
     ]
   end
