@@ -50,7 +50,7 @@ defmodule Zillow do
                    taxassessmentyear = Friendly.find(zillow.body, "taxassessmentyear")
                    taxassessment = Friendly.find(zillow.body, "taxassessment")
                    yearbuilt = Friendly.find(zillow.body, "yearbuilt")
-                   lotSizesqft = Friendly.find(zillow.body, "lotsizesqft")
+                   lotsizesqft = Friendly.find(zillow.body, "lotsizesqft")
                    lastupdated = Friendly.find(zillow.body, "last-updated")
                    zindexvalue = Friendly.find(zillow.body, "zindexvalue")
 
@@ -66,8 +66,8 @@ defmodule Zillow do
                    mapthishome = Friendly.find(zillow.body, "mapthishome")
                    comparables = Friendly.find(zillow.body, "comparables")
                    overview = Friendly.find(zillow.body, "overview")
-                   forsalebyqwner = Friendly.find(zillow.body, "forsalebyowner")
-                   forSale = Friendly.find(zillow.body, "forsale")
+                   forsalebyowner = Friendly.find(zillow.body, "forsalebyowner")
+                   forsale = Friendly.find(zillow.body, "forsale")
 
                    [%{attributes: _, elements: _, name: _, text: code, texts: _}] = c
 
@@ -113,7 +113,7 @@ defmodule Zillow do
                             [taxassessmentyear] = Friendly.find(zillow.body, "taxassessmentyear")
                             [taxassessment] = Friendly.find(zillow.body, "taxassessment")
                             [yearbuilt] = Friendly.find(zillow.body, "yearbuilt")
-                            [lotSizesqft] = Friendly.find(zillow.body, "lotsizesqft")
+                            [lotsizesqft] = Friendly.find(zillow.body, "lotsizesqft")
                             [lastupdated] = Friendly.find(zillow.body, "last-updated")
                             [zindexvalue]= Friendly.find(zillow.body, "zindexvalue")
 
@@ -130,7 +130,7 @@ defmodule Zillow do
                             [comparables] = Friendly.find(zillow.body, "comparables")
                             [overview] = Friendly.find(zillow.body, "overview")
                             [forsalebyowner] = Friendly.find(zillow.body, "forsalebyowner")
-                            [forSale] = Friendly.find(zillow.body, "forsale")
+                            [forsale] = Friendly.find(zillow.body, "forsale")
 
                             %{
                               bathrooms: String.to_float(bathroom_number),
@@ -140,7 +140,7 @@ defmodule Zillow do
                               fipscounty: fipscounty.text,
                               taxassessmentyear: taxassessmentyear.text,
                               yearbuilt: yearbuilt.text,
-                              lotSizesqft: lotSizesqft.text,
+                              lotsizesqft: lotsizesqft.text,
                               lastupdated: lastupdated.text,
                               zindexvalue: zindexvalue.text,
                               street: street.text,
@@ -149,7 +149,7 @@ defmodule Zillow do
                               state: state.text,
                               latitude: latitude.text,
                               longitude: longitude.text,
-                              forSale: forSale.text,
+                              forsale: forsale.text,
                               forsalebyowner: forsalebyowner.text,
                               homedetails: homedetails.text,
                               graphsanddata: graphsanddata.text,

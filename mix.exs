@@ -1,7 +1,7 @@
 defmodule Zillow.Mixfile do
   use Mix.Project
 
-   @version "0.2.2"
+   @version "1.0"
    @source_url "https://github.com/mithereal/elixir-zillow"
 
   def project do
