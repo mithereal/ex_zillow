@@ -2,9 +2,9 @@
 
 ** This will fetch Information From Zillow about a given address **
 
-[![Build Status](https://travis-ci.org/mithereal/elixir-zillow.svg?branch=master)](https://travis-ci.org/mithereal/ecto-role)
+[![Build Status](https://travis-ci.org/mithereal/elixir-zillow.svg?branch=master)](https://travis-ci.org/mithereal/elixir-zillow)
 
-[![Inline docs](http://inch-ci.org/github/mithereal/elixir-zillow.svg)](http://inch-ci.org/github/mithereal/ecto-role)
+[![Inline docs](http://inch-ci.org/github/mithereal/elixir-zillow.svg)](http://inch-ci.org/github/mithereal/elixir-zillow)
 
 ## Installation
 
