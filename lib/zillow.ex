@@ -159,7 +159,7 @@ defmodule Zillow do
                             }
 
                      "2" -> %{error: 2, message: "invalid zillow api key"}
-                     _ -> %{error: 000, message: "a general error occured"}
+                     _ -> %{error: code, message: "a general error occured"}
                    end
 
                    code_response
