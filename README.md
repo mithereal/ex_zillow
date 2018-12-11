@@ -13,7 +13,7 @@ by adding `zillow` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:zillow, "~> 0.1.0"}]
+  [{:zillow, "~> 2.0.0"}]
 end
 ```
 

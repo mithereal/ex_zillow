@@ -6,7 +6,7 @@ defmodule Zillow do
 
 
   @doc """
-   fetch the number of rooms and sqft from zillow return a json string.
+   fetch the response from zillow return a json string.
 
    ## Examples
 
