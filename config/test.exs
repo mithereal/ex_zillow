@@ -1,4 +1,3 @@
-use Mix.Config
+import Config
 
-     config :zillow, api_key: "zillow-key"
-
+config :zillow, api_key: "zillow-key"
